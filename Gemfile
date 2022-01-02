@@ -9,7 +9,10 @@ gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Auth
-gem 'devise_token_auth', '~> 1.1.4'
+gem 'devise_token_auth', '~> 1.2'
+
+# Cors
+gem 'rack-cors', '~> 1.1.1'
 
 
 group :development, :test do
@@ -19,7 +22,7 @@ group :development, :test do
   gem "faker"
   gem "pry-rails", "0.3.4"
   gem "rspec-rails", "~> 5.0.0"
-
+  gem 'shoulda-matchers', '~> 5.1'
 end
 
 group :development do

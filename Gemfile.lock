@@ -70,7 +70,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise_token_auth (1.1.5)
+    devise_token_auth (1.2.0)
       bcrypt (~> 3.0)
       devise (> 3.5.2, < 5)
       rails (>= 4.2.0, < 6.2)
@@ -115,6 +115,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.4.4)
@@ -167,6 +169,8 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.3)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -195,15 +199,17 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
-  devise_token_auth (~> 1.1.4)
+  devise_token_auth (~> 1.2)
   factory_bot_rails
   faker
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   pry-rails (= 0.3.4)
   puma (~> 4.1)
+  rack-cors (~> 1.1.1)
   rails (~> 6.0.3, >= 6.0.3.3)
   rspec-rails (~> 5.0.0)
+  shoulda-matchers (~> 5.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
