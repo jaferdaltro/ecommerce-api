@@ -2,6 +2,7 @@ pt-BR:
   activerecord:
     errors:
       messages:
+        future_date: 'deve ser uma data futura'
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
