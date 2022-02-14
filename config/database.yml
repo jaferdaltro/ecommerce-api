@@ -10,6 +10,7 @@ development:
   username: postgres
   password: postgres
   host: 127.0.0.1
+  port: 5433
 
 test:
   <<: *default
@@ -17,6 +18,7 @@ test:
   username: postgres
   password: postgres
   host: 127.0.0.1
+  port: 5433
 
 production:
   <<: *default

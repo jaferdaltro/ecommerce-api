@@ -125,23 +125,31 @@ RSpec.describe "Admin::V1::Categories", type: :request do
         delete url, headers: auth_header(user)
       end.to change(Category, :count).by -1
     end
+    
     it "returns success status" do
       delete url, headers: auth_header(user)
       expect(response).to have_http_status :no_content
     end
+
     it "does not return any body content" do
       delete url, headers: auth_header(user)
       expect(response['body']).to eq nil
       # expect(body_json).to_not be_present
     end
+
     it "remove all associated product category" do
       product_categories = create_list(:product_category, 3, category: category)
       delete url, headers: auth_header(user)
       expected_products = ProductCategory.where(id: product_categories.map(&:id))
       expect(expected_products.count).to eq 0
     end
+
     it "does not remove any unassociated category" do
-      
+      product_categories = create_list(:product_category, 3)
+      delete url, headers: auth_header(user)
+      present_product_categories_id = product_categories.map(&:id)
+      expected_products_categories = ProductCategory.where(id: present_product_categories_id)
+      expect(expected_products_categories.ids).to contain_exactly *present_product_categories_id
     end
   end
 end
