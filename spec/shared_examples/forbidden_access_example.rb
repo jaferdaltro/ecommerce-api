@@ -1,6 +1,6 @@
 shared_examples "forbidden acces" do
   it "returns error message" do
-    expect(body_json['errors']['message']).to eq ("Forbidden acces")
+    expect(body_json['errors']['message']).to eq ("Forbidden access")
   end
  
   it "returns forbidden status" do

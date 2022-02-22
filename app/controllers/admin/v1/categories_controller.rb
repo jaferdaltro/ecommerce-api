@@ -30,7 +30,7 @@ module Admin::V1
       @category.save!
       render :show
     rescue
-      render_errors(fields: @category.errors.messages)
+      render_error(fields: @category.errors.messages)
     end
 
     def category_params
