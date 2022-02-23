@@ -18,7 +18,9 @@ module Admin::V1
     end
 
     def destroy
-      @category.delete unless @category.nil?
+      @category.destroy!
+    rescue
+      render_errors(fields: @category.errors.messages)
     end
     private
 
