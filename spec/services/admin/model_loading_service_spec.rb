@@ -21,7 +21,6 @@ describe Admin::ModelLoadingService do
       end
 
       it "returns records following search, order and pagination" do
-        binding.pry
         search_categories.sort! { |a, b| b[:name] <=> a[:name] }
         service = described_class.new(Category.all, params)
         expected_categories = search_categories[4..7]
