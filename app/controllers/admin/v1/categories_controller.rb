@@ -1,6 +1,8 @@
 module Admin::V1
   class CategoriesController < ApiController
-    before_action :set_category, only: %i(update destroy)
+    before_action :set_category, only: %i(update destroy show)
+
+    def show; end
 
     def index
       @categories = load_categories
