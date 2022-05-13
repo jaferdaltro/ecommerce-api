@@ -4,11 +4,11 @@ module RequestAPI
     symbolize_keys ? json.deep_symbolize_keys : json
   end
 
-  def auth_header(user = nil, options: {})
+  def auth_header(user = nil, merge_with: {})
     user ||= create(:user)
     auth = user.create_new_auth_token
     header = auth.merge({ 'Content-Type' => 'application/json', 'Accept' => 'application/json' })
-    header.merge options
+    header.merge merge_with
   end
 end
 
