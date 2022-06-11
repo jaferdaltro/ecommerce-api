@@ -28,3 +28,10 @@
 
 # Datatabase files
 .db-data
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# asdf
+.tool-versions
