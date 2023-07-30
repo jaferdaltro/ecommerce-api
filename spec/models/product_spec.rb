@@ -15,6 +15,6 @@ RSpec.describe Product, type: :model do
   it { is_expected.to have_many(:categories).through(:product_categories) }
   it { is_expected.to define_enum_for(:status).with_values({ unavailable: 0, available: 1 }) }
 
-  it_behaves_like "name searchable concern", :product
+  it_behaves_like "like searchable concern", :product
   it_behaves_like "paginatable concern", :product
 end
