@@ -1,0 +1,21 @@
+RSpec/NestedGroups:
+  Max: 2
+Style/RedundantSelf:
+  Enabled: false
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+Naming/AccessorMethodName:
+  Enabled: true
+Naming/PredicateName:
+  Enabled: true
+  NamePrefix:
+  - !ruby/regexp /(.*?)_is_(.*?)/
+  - is_
+  - has_
+  - have_
+  NamePrefixBlacklist:
+  - !ruby/regexp /(.*?)_is_(.*?)/
+  - is_
+  - has_
+  - have_
