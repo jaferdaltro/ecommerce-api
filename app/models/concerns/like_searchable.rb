@@ -2,8 +2,8 @@ module LikeSearchable
   extend ActiveSupport::Concern
 
   included do
-    scope :search_by_key, lambda do |key, value|
-      self.where("#{key} ILIKE ?", "%#{value}%")
+    scope :like, -> (key, value) do 
+      self.where(self.arel_table[key].matches("%#{value}%"))
     end
   end
 end
