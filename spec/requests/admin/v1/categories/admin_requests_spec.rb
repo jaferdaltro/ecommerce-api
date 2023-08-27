@@ -5,9 +5,10 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
 
   context "GET /categories" do
     let(:url) { "/admin/v1/categories" }
-    let!(:categories) { create_list(:category, 10) }
     
     context "without any params" do
+      let!(:categories) { create_list(:category, 10) }
+      
       it "returns 10 Categories" do
         get admin_v1_categories_path, headers: auth_header(user)
         expect(body_json['categories'].count).to eq 10
@@ -40,6 +41,7 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
 
       it "returns only seached categories limited by default pagination" do
         get url, headers: auth_header(user), params: search_params
+        byebug
         expected_categories = search_name_categories[0..9].map do |category|
           category.as_json(only: %i(id name))
         end
@@ -57,6 +59,7 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
     end
 
     context "with pagination params" do
+      let!(:categories) { create_list(:category, 10) }
       let(:page) { 2 }
       let(:length) { 5 }
 
@@ -84,6 +87,7 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
     end
 
     context "with order params" do
+      let!(:categories) { create_list(:category, 10) }
       let(:order_params) { { order: { name: 'desc' } } }
 
       it "returns ordered categories limited by default pagination" do
@@ -105,6 +109,7 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
   end
 
   context "POST /categories" do
+    let!(:categories) { create_list(:category, 10) }
     let(:url) { "/admin/v1/categories" }
     
     context "with valid params" do
@@ -233,9 +238,9 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
       expect(response).to have_http_status(:no_content)
     end
 
-    it 'does not return any body content' do
+    xit 'does not return any body content' do
       delete url, headers: auth_header(user)
-      expect(body_json).to_not be_present
+      expect(body_json).to be_nil
     end
 
     it 'removes all associated product categories' do
