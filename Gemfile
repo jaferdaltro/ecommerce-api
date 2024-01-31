@@ -25,6 +25,7 @@ group :development, :test do
   gem 'pry-rails', '0.3.9'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
   gem 'rubocop', '~> 1.55', require: false
+  gem 'rubocop-rails', '~> 2.23', '>= 2.23.1'
   gem 'shoulda-matchers', '~> 5.1'
 end
 
