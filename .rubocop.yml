@@ -1,0 +1,122 @@
+# Rubocop configuration file
+# See: https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+require: rubocop-rails
+
+Rails:
+  Enabled: true
+
+# Documentation
+
+Style/Documentation:
+  Enabled: false
+
+# Layout
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/FirstParameterIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstArgumentIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: new_line
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - 'Gemfile'
+
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+
+Layout/FirstMethodParameterLineBreak:
+  Enabled: true
+
+Layout/FirstArrayElementLineBreak:
+  Enabled: true
+
+Layout/FirstHashElementLineBreak:
+  Enabled: true
+
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: true
+
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+
+Layout/RedundantLineBreak:
+  Enabled: true
+
+# Metrics
+
+Metrics:
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+# Lint
+
+Lint/MissingSuper:
+  Enabled: false
+
+# Style
+
+Style/ClassVars:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolArray:
+  Exclude:
+    - 'Gemfile'
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+# Rails
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/FilePath:
+  EnforcedStyle: arguments
+
+# Targets
+
+AllCops:
+  NewCops: disable
+  TargetRubyVersion: 3.1
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
+    - '.irbrc'
+    - 'balance_dependencies/**/*'
+    - 'tmp/**/*'
