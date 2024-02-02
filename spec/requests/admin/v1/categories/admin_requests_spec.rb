@@ -5,15 +5,15 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
 
   context "GET /categories" do
     let(:url) { "/admin/v1/categories" }
-    
+
     context "without any params" do
       let!(:categories) { create_list(:category, 10) }
-      
+
       it "returns 10 Categories" do
         get admin_v1_categories_path, headers: auth_header(user)
         expect(body_json['categories'].count).to eq 10
       end
-      
+
       it "returns 10 first Categories" do
         get url, headers: auth_header(user)
         expected_categories = categories[0..9].as_json(only: %i(id name))
@@ -32,16 +32,16 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
 
     context "with search[name] param" do
       let!(:search_name_categories) do
-        categories = [] 
+        categories = []
         15.times { |n| categories << create(:category, name: "Search #{n + 1}") }
-        categories 
+        categories
       end
 
       let(:search_params) { { search: { name: "Search" } } }
 
       it "returns only seached categories limited by default pagination" do
         get url, headers: auth_header(user), params: search_params
-        byebug
+
         expected_categories = search_name_categories[0..9].map do |category|
           category.as_json(only: %i(id name))
         end
@@ -69,7 +69,7 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
         get url, headers: auth_header(user), params: pagination_params
         expect(body_json['categories'].count).to eq length
       end
-      
+
       it "returns categories limited by pagination" do
         get url, headers: auth_header(user), params: pagination_params
         expected_categories = categories[5..9].as_json(only: %i(id name))
@@ -96,7 +96,7 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
         expected_categories = categories[0..9].as_json(only: %i(id name))
         expect(body_json['categories']).to contain_exactly *expected_categories
       end
- 
+
       it "returns success status" do
         get url, headers: auth_header(user), params: order_params
         expect(response).to have_http_status(:ok)
@@ -111,7 +111,7 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
   context "POST /categories" do
     let!(:categories) { create_list(:category, 10) }
     let(:url) { "/admin/v1/categories" }
-    
+
     context "with valid params" do
       let(:category_params) { { category: attributes_for(:category) }.to_json }
 
@@ -134,7 +134,7 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
     end
 
     context "with invalid params" do
-      let(:category_invalid_params) do 
+      let(:category_invalid_params) do
         { category: attributes_for(:category, name: nil) }.to_json
       end
 
@@ -200,7 +200,7 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
     end
 
     context "with invalid params" do
-      let(:category_invalid_params) do 
+      let(:category_invalid_params) do
         { category: attributes_for(:category, name: nil) }.to_json
       end
 
@@ -228,7 +228,7 @@ RSpec.describe "Admin V1 Categories as :admin", type: :request do
     let(:url) { "/admin/v1/categories/#{category.id}" }
 
     it 'removes Category' do
-      expect do  
+      expect do
         delete url, headers: auth_header(user)
       end.to change(Category, :count).by(-1)
     end
